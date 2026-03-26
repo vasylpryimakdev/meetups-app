@@ -1,4 +1,4 @@
-import { MongoClient } from "mongodb";
+import { MongoClient, ObjectId } from "mongodb";
 
 // /api/new-meetup
 // POST /api/new-meetup
@@ -12,9 +12,7 @@ async function handler(req, res) {
 
     const meetupsCollection = db.collection("meetups");
 
-    const result = await meetupsCollection.insertOne(data);
-
-    console.log(result);
+    await meetupsCollection.insertOne(data);
 
     client.close();
 
